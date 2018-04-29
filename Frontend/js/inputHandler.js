@@ -1,10 +1,11 @@
 var textarea = document.getElementById("chat-textarea");
 var Chatname = document.getElementById("chat-name");
 var messages = document.getElementById("chat-messages");
+var usercount = document.getElementById("usercount");
 
 
 try {
-    var socket = io.connect('https://neel-test-chat.herokuapp.com');
+    var socket = io.connect('http://127.0.0.1:8080');
 } catch (e) {
     console.log(e.message);
 }
@@ -48,6 +49,12 @@ if (socket != undefined) {
         });
 
     });
+
+    socket.on('count', function(data) {
+        usercount.innerText = "Users Online : " + data;
+    });
+
+
 
 
 } else {
