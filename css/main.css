@@ -17,7 +17,7 @@ input {
 .chat-messages {
     width: 100%;
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .chat-name,

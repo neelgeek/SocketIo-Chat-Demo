@@ -12,6 +12,11 @@ mongoose.connect('mongodb://localhost/chat').then(() => {
         }
 
         console.log("A user Connected!");
+        messageModel.find().limit(100).sort({ _id: 1 }).then(data => {
+            socket.emit('output', data);
+        })
+
+
         socket.on('input', function(data) {
 
             whiteSpace = /^\s*$/;
@@ -23,6 +28,7 @@ mongoose.connect('mongodb://localhost/chat').then(() => {
                 newMessage.save().then((result) => {
                     console.log(result);
                     sendStatus('clear');
+                    client.emit('output', [result]);
                 });
             }
 

@@ -1,5 +1,6 @@
 var textarea = document.getElementById("chat-textarea");
 var Chatname = document.getElementById("chat-name");
+var messages = document.getElementById("chat-messages");
 
 
 try {
@@ -34,6 +35,18 @@ if (socket != undefined) {
             alert('Enter Name and Message');
         }
     });
+
+    socket.on('output', function(data) {
+        data.forEach(message => {
+            let msg = document.createElement('div');
+            msg.setAttribute('class', 'chat-message');
+            msg.textContent = message.name + ": " + message.message;
+            messages.appendChild(msg);
+            //messages.insertBefore(msg, messages.firstChild);
+        });
+
+    });
+
 
 } else {
     alert("Cannot Connect to Server!");
