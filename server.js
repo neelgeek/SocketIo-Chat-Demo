@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const client = require('socket.io').listen(8080).sockets;
+const port = process.env.PORT || 8080;
+const client = require('socket.io').listen(port).sockets;
 const messageModel = require('./models/messageModel');
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
