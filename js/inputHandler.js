@@ -1,6 +1,7 @@
 var textarea = document.getElementById("chat-textarea");
 var Chatname = document.getElementById("chat-name");
 var messages = document.getElementById("chat-messages");
+var usercount = document.getElementById("usercount");
 
 
 try {
@@ -48,6 +49,12 @@ if (socket != undefined) {
         });
 
     });
+
+    socket.on('count', function(data) {
+        usercount.innerText = "Users Online : " + data;
+    });
+
+
 
 
 } else {

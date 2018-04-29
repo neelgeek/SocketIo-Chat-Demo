@@ -26,3 +26,11 @@ input {
     width: 100%;
     max-width: 100%;
 }
+
+.usercount {
+    height: 5vh;
+    width: 100%;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 25px;
+}
