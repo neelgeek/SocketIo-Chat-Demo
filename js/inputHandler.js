@@ -42,6 +42,8 @@ if (socket != undefined) {
             msg.setAttribute('class', 'chat-message');
             msg.textContent = message.name + ": " + message.message;
             messages.appendChild(msg);
+            messages.scrollTo(0, messages.scrollHeight);
+
             //messages.insertBefore(msg, messages.firstChild);
         });
 
