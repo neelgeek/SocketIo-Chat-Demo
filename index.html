@@ -2,30 +2,25 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
 
 </head>
 
 <body>
     <div class="chat">
-        <input type="text" class="chat-name" placeholder="Enter Name">
+        <input id="chat-name" type="text" class="chat-name" placeholder="Enter Name">
         <div class="chat-messages">
-            <div class="chat-message">
-                Neel:Hi!
-            </div>
-            <div class="chat-message">
-                Shivani:Hi!
-            </div>
+
         </div>
-        <textarea class="chat-textarea" placeholder="Enter Message"></textarea>
+        <textarea id="chat-textarea" class="chat-textarea" placeholder="Enter Message"></textarea>
         <div class="chat-status">Status:<span></span></div>
     </div>
 
     <script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+    <script src="js/inputHandler.js"></script>
 </body>
 
 </html>
