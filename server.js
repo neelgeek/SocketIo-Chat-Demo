@@ -11,7 +11,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
         userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": 1 } }).then(data => {
             socket.emit('count', data);
-        })
+        }).catch(err => {
+            console.log(err.message);
+        });
 
         function sendStatus(data) {
             socket.emit('status', data);
@@ -45,7 +47,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     client.on('disconnect', function(socket) {
         userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": -1 } }).then(data => {
             socket.emit('count', data);
-        })
+        }).catch(err => {
+            console.log(err.message);
+        });
     })
 }).catch(err => {
     console.log(err.message);
