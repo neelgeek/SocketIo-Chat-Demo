@@ -5,7 +5,7 @@ var usercount = document.getElementById("usercount");
 
 
 try {
-    var socket = io.connect('http://127.0.0.1:8080');
+    var socket = io.connect('https://neel-test-chat.herokuapp.com');
 } catch (e) {
     console.log(e.message);
 }
