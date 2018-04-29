@@ -51,7 +51,6 @@ if (socket != undefined) {
     });
 
     socket.on('count', function(data) {
-
         usercount.innerText = "Users Online : " + data.users;
     });
 
