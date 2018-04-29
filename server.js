@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const client = require('socket.io').listen(8080).sockets;
 const messageModel = require('./models/messageModel');
 
-mongoose.connect('mongodb://localhost/chat').then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("Connected to DB!");
     client.on('connection', function(socket) {
 
