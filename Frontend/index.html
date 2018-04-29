@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+
+</head>
+
+<body>
+    <div class="chat">
+        <input id="chat-name" type="text" class="chat-name" value="Anonymous">
+        <div id="chat-messages" class="chat-messages">
+
+        </div>
+        <textarea id="chat-textarea" class="chat-textarea" placeholder="Enter Message"></textarea>
+        <div class="chat-status">Status:<span></span></div>
+    </div>
+
+    <script src="https://neel-test-chat.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="js/inputHandler.js"></script>
+</body>
+
+</html>
