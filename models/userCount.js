@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userCount = mongoose.Schema({
-    name: string,
+    name: String,
     users: number
 });
 
