@@ -1,0 +1,10 @@
+body,
+textarea,
+input {
+    font: 13px, "Trebuchet MS", sans-serif;
+    background: brown
+}
+
+.chat {
+    max-width: 50%;
+}
