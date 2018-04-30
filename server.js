@@ -10,8 +10,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("Connected to DB!");
     client.on('connection', function(socket) {
 
-        users += 1;
-        socket.emit('count', users);
+
         // userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": 1 } }).then(data => {
         //     socket.emit('count', data);
         // }).catch(err => {
@@ -23,6 +22,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         }
 
         console.log("A user Connected!");
+        users += 1;
+        socket.emit('count', users);
+        console.log(users);
         messageModel.find().limit(100).sort({ _id: 1 }).then(data => {
             socket.emit('output', data);
         })
@@ -49,7 +51,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
     client.on('disconnect', function(socket) {
         users -= 1;
+        console.log("A user left");
         socket.emit('count', users);
+        console.log(users);
         // userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": -1 } }).then(data => {
         //     socket.emit('count', data);
         // }).catch(err => {
