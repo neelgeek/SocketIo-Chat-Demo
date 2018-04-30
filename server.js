@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         }
 
 
-        messageModel.find().limit(100).sort({ _id: 1 }).then(data => {
+        messageModel.find().limit(100).sort({ _id: -1 }).then(data => {
             socket.emit('output', data);
         })
 
