@@ -18,12 +18,12 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         // });
 
         function sendStatus(data) {
-            client.emit('status', data);
+            socket.emit('status', data);
         }
 
         console.log("A user Connected!");
         users += 1;
-        socket.emit('count', users);
+        client.emit('count', users);
         console.log(users);
         messageModel.find().limit(100).sort({ _id: 1 }).then(data => {
             socket.emit('output', data);
