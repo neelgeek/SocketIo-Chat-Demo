@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
 
         messageModel.find().limit(100).sort({ _id: -1 }).then(data => {
+            data.reverse();
             socket.emit('output', data);
         })
 
