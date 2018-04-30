@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
         // });
 
         function sendStatus(data) {
-            socket.emit('status', data);
+            client.emit('status', data);
         }
 
         console.log("A user Connected!");
@@ -52,7 +52,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     client.on('disconnect', function(socket) {
         users -= 1;
         console.log("A user left");
-        socket.emit('count', users);
+        client.emit('count', users);
         console.log(users);
         // userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": -1 } }).then(data => {
         //     socket.emit('count', data);
