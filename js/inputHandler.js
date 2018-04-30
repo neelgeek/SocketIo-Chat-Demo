@@ -53,8 +53,15 @@ if (socket != undefined) {
     socket.on('output', function(data) {
         data.forEach(message => {
             let msg = document.createElement('div');
+            let owner = document.createElement('text');
+            owner.textContent = message.name + " : ";
+            owner.setAttribute("class", "owner");
+            let content = document.createElement('text');
+            content.setAttribute("class", "msg-content");
+            content.textContent = message.message;
             msg.setAttribute('class', 'chat-message');
-            msg.textContent = message.name + ": " + message.message;
+            msg.appendChild(owner);
+            msg.appendChild(content);
             messages.appendChild(msg);
             messages.scrollTo(0, messages.scrollHeight);
 
