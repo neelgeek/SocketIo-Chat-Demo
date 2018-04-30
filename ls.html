@@ -3,10 +3,15 @@
 <head>
     <script>
         window.onload = function() {
+            console.log("Window loaded");
             if (localStorage.getItem("hasCodeRunBefore") === null) {
                 console.log("Not visited Before");
                 localStorage.setItem("hasCodeRunBefore", true);
             }
+        }
+
+        window.onunload = function() {
+            console.log("Window unloading");
         }
     </script>
 </head>

@@ -53,7 +53,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
         socket.on('leave', function(d) {
             console.log("A user left");
-            users -= 1;
+            if (users > 0) {
+                users -= 1;
+            }
             client.emit('count', users);
             console.log(users);
         });
