@@ -44,16 +44,16 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
         });
 
-        socket.on('join', function() {
+        socket.on('join', function(d) {
             console.log("A user Connected!");
             users += 1;
             client.emit('count', users);
             console.log(users);
         });
 
-        socket.on('leave', function() {
-            users -= 1;
+        socket.on('leave', function(d) {
             console.log("A user left");
+            users -= 1;
             client.emit('count', users);
             console.log(users);
         });
