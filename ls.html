@@ -1,0 +1,14 @@
+<html>
+
+<head>
+    <script>
+        window.onload = function() {
+            if (localStorage.getItem("hasCodeRunBefore") === null) {
+                console.log("Not visited Before");
+                localStorage.setItem("hasCodeRunBefore", true);
+            }
+        }
+    </script>
+</head>
+
+</html>

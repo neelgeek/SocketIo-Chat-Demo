@@ -3,7 +3,7 @@ const port = process.env.PORT || 8080;
 const client = require('socket.io').listen(port).sockets;
 console.log("App running on " + port);
 const messageModel = require('./models/messageModel');
-const userCount = require('./models/userCount');
+//const userCount = require('./models/userCount');
 var users = 0;
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
@@ -21,10 +21,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
             socket.emit('status', data);
         }
 
-        console.log("A user Connected!");
-        users += 1;
-        client.emit('count', users);
-        console.log(users);
+
         messageModel.find().limit(100).sort({ _id: 1 }).then(data => {
             socket.emit('output', data);
         })
@@ -46,20 +43,22 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
             }
 
         });
+
+        socket.on('join', function() {
+            console.log("A user Connected!");
+            users += 1;
+            client.emit('count', users);
+            console.log(users);
+        });
+
+        socket.on('leave', function() {
+            users -= 1;
+            console.log("A user left");
+            client.emit('count', users);
+            console.log(users);
+        });
     })
 
-
-    client.on('disconnect', function(socket) {
-        users -= 1;
-        console.log("A user left");
-        client.emit('count', users);
-        console.log(users);
-        // userCount.findOneAndUpdate({ "name": "master" }, { $inc: { "users": -1 } }).then(data => {
-        //     socket.emit('count', data);
-        // }).catch(err => {
-        //     console.log(err.message);
-        // });
-    })
 }).catch(err => {
     console.log(err.message);
 })
