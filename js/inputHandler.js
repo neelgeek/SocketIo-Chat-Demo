@@ -4,6 +4,19 @@ var messages = document.getElementById("chat-messages");
 var usercount = document.getElementById("usercount");
 
 
+$.ajax({
+        type: 'POST',
+        url: 'https://api.codetunnel.net/random-nick',
+        dataType: 'json',
+        data: JSON.stringify({})
+    })
+    .done(function(r) {
+        Chatname.value = r.nickname;
+    });
+
+
+
+
 try {
     var socket = io.connect('https://neel-test-chat.herokuapp.com');
 } catch (e) {
