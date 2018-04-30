@@ -55,7 +55,17 @@ if (socket != undefined) {
         usercount.innerText = "Users Online : " + data;
     });
 
+    window.onload = function() {
+        if (localStorage.getItem("hasCodeRunBefore") === null) {
+            socket.emit('join', {});
+            localStorage.setItem("hasCodeRunBefore", true);
+        }
+    }
 
+    window.onbeforeunload = function() {
+        socket.emit('leave', {});
+        localStorage.removeItem("hasCodeRunBefore");
+    }
 
 
 } else {
